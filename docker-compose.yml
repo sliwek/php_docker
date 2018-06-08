@@ -1,0 +1,25 @@
+version: '0'
+
+services:
+  # PHP, Apache, Composer and xDebug
+  php:
+    build: ./php
+    ports:
+      - 80:80
+    volumes:
+      - /Users/Sliwek/dev:/var/www/html
+    container_name: "php-apache"
+    privileged: true
+    restart: always
+
+
+  # MYSQL database
+  db:
+    image: mysql:8
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    container_name: db-mySql
+    privileged: true
+    restart: always
